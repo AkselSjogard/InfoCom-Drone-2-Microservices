@@ -9,33 +9,66 @@ def get_direction():
     d_long = 0
     d_la = 0
     send_vel = False
-    c = click.getchar()
-    if c =='a':
-        click.echo('Left')
-        send_vel = True
-        d_long = -1
-        d_la = 0
-    elif c == 'd':
-        click.echo('Right')
-        send_vel = True
-        d_long = 1
-        d_la = 0
-    elif c =='w':
-        click.echo('Up')
-        send_vel = True
-        d_long = 0
-        d_la = 1
-    elif c == 's':
-        click.echo('Down')
-        send_vel = True
-        d_long = 0
-        d_la = -1
-    else:
-        d_long = 0
-        d_la = 0
-        click.echo('Invalid input :(')
-        send_vel = False
+    b = sense.stick.wait_for_event()
+    if b.action != "released":
+        c = b.direction
+
+        if c =="left":
+            click.echo('Left')
+            send_vel = True
+            d_long = -1
+            d_la = 0
+        elif c == "right":
+            click.echo('Right')
+            send_vel = True
+            d_long = 1
+            d_la = 0
+        elif c =="up":
+            click.echo('Up')
+            send_vel = True
+            d_long = 0
+            d_la = 1
+        elif c == "down":
+            click.echo('Down')
+            send_vel = True
+            d_long = 0
+            d_la = -1
+        else:
+            d_long = 0
+            d_la = 0
+            click.echo('Invalid input :(')
+            send_vel = False
     return d_long, d_la, send_vel
+#     d_long = 0
+#     d_la = 0
+#     send_vel = False
+#     c = click.getchar()
+#     if c =='a':
+#         click.echo('Left')
+#         send_vel = True
+#         d_long = -1
+#         d_la = 0
+#     elif c == 'd':
+#         click.echo('Right')
+#         send_vel = True
+#         d_long = 1
+#         d_la = 0
+#     elif c =='w':
+#         click.echo('Up')
+#         send_vel = True
+#         d_long = 0
+#         d_la = 1
+#     elif c == 's':
+#         click.echo('Down')
+#         send_vel = True
+#         d_long = 0
+#         d_la = -1
+#     else:
+#         d_long = 0
+#         d_la = 0
+#         click.echo('Invalid input :(')
+#         send_vel = False
+#     return d_long, d_la, send_vel
 
 
 if __name__ == "__main__":
